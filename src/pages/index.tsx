@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { Inter } from '@next/font/google';
 import Header from '../components/header';
 import Container from '@mui/material/Container';
+import Sidebar from '@/components/sidebar';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,7 +14,7 @@ export default function Home() {
         <meta name="description" content="A website for tracking board games" />
       </Head>
       <header>
-        <Header />
+        <Sidebar/>
       </header>
       <main>
         <Container maxWidth="xl">
