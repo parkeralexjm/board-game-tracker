@@ -13,12 +13,9 @@ export default function Home() {
         <title>Board Game Tracker</title>
         <meta name="description" content="A website for tracking board games" />
       </Head>
-      <header>
-        <Sidebar/>
-      </header>
       <main>
         <Container maxWidth="xl">
-          <div>Content here</div>
+          <Sidebar/>
         </Container>
       </main>
     </>
