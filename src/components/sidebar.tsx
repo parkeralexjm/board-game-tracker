@@ -34,16 +34,15 @@ export default function PermanentDrawerLeft() {
             noWrap
             component="a"
             href="/"
-            sx={{  }}
           >
             BGC icon
           </Typography>
         </Toolbar>
         <Divider />
         <List>
-          {['Collection', 'Community', 'High Scores'].map((text, index) => (
+          {['Collection', 'Community', 'High Scores'].map((text) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton component="a" href={text} color="primary">
+              <ListItemButton component="a" href='/' color="primary">
                 <ListItemText primary={text} />
               </ListItemButton>
             </ListItem>
