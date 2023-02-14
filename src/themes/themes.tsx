@@ -3,6 +3,9 @@ import { purple, teal } from "@mui/material/colors"
 
 export const mainTheme = createTheme({
     palette: {
+        background: {
+            default: '#009688'
+        },
         primary: purple,
         secondary: teal
     },

@@ -17,7 +17,7 @@ export default function Home() {
       <main>
         <Container maxWidth="xl">
           <Sidebar/>
-          {/* <Homepage/> */}
+          <Homepage/>
         </Container>
       </main>
     </>
