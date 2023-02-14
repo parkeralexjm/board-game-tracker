@@ -13,6 +13,7 @@ import { mainTheme } from '@/themes/themes';
 
 const drawerWidth = 240;
 
+<<<<<<< Updated upstream
 export default function PermanentDrawerLeft() {
   return (
     <ThemeProvider theme={mainTheme}>
@@ -28,6 +29,17 @@ export default function PermanentDrawerLeft() {
           variant="permanent"
           anchor="left"
         >
+=======
+export default function ResponsiveDrawer() {
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  }
+
+  const drawer = (
+    <div>
+>>>>>>> Stashed changes
         <Toolbar>
           <Typography
             variant="h6"
@@ -38,6 +50,7 @@ export default function PermanentDrawerLeft() {
             BGC icon
           </Typography>
         </Toolbar>
+<<<<<<< Updated upstream
         <Divider />
         <List>
           {['Collection', 'Community', 'High Scores'].map((text) => (
@@ -49,6 +62,78 @@ export default function PermanentDrawerLeft() {
           ))}
         </List>
         </Drawer>
+=======
+      <Divider />
+      <List>
+        {['Collection', 'Community', 'High Score'].map((text) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton href="/">
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  )
+
+  return (
+    <ThemeProvider theme={mainTheme}>
+      <Box sx={{ display: 'flex' }}>
+        <CssBaseline />
+        <AppBar
+          position="fixed"
+          sx={{
+            width: { sm: `calc(100% - ${drawerWidth}px)` },
+            ml: { sm: `${drawerWidth}px` },
+          }}
+        >
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { sm: 'none' } }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" noWrap component="div">
+              placeholder text
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Box
+          component="nav"
+          sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+          aria-label="mailbox folders"
+        >
+          {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+          <Drawer
+            variant="temporary"
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+            sx={{
+              display: { xs: 'block', sm: 'none' },
+              '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            }}
+          >
+            {drawer}
+          </Drawer>
+          <Drawer
+            variant="permanent"
+            sx={{
+              display: { xs: 'none', sm: 'block' },
+              '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            }}
+            open
+          >
+            {drawer}
+          </Drawer>
+        </Box>
+>>>>>>> Stashed changes
       </Box>
     </ThemeProvider>
   );
