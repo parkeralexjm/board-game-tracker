@@ -9,11 +9,12 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { mainTheme } from '@/themes/themes';
-import ThemeProvider from '@mui/material/styles/ThemeProvider';
+
 import CssBaseline from '@mui/material/CssBaseline';
 import AppBar from '@mui/material/AppBar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { ThemeProvider } from '@mui/material';
 
 const drawerWidth = 240;
 
