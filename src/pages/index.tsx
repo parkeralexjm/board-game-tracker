@@ -3,6 +3,7 @@ import { Inter } from '@next/font/google';
 import Header from '../components/header';
 import Container from '@mui/material/Container';
 import Sidebar from '@/components/sidebar';
+import Homepage from '@/components/homepage';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,6 +17,7 @@ export default function Home() {
       <main>
         <Container maxWidth="xl">
           <Sidebar/>
+          {/* <Homepage/> */}
         </Container>
       </main>
     </>
