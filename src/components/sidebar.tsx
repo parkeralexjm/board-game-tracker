@@ -8,29 +8,16 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import { Button, ThemeProvider } from '@mui/material';
 import { mainTheme } from '@/themes/themes';
+import ThemeProvider from '@mui/material/styles/ThemeProvider';
+import CssBaseline from '@mui/material/CssBaseline';
+import AppBar from '@mui/material/AppBar';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const drawerWidth = 240;
 
-<<<<<<< Updated upstream
-export default function PermanentDrawerLeft() {
-  return (
-    <ThemeProvider theme={mainTheme}>
-      <Box sx={{ display: 'flex' }}>
-        <Drawer
-          sx={{
-            width: drawerWidth,
-            flexShrink: 0,
-            '.MuiDrawer-paper': {
-              width: drawerWidth,
-            },
-          }}
-          variant="permanent"
-          anchor="left"
-        >
-=======
-export default function ResponsiveDrawer() {
+const ResponsiveDrawer = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -39,7 +26,6 @@ export default function ResponsiveDrawer() {
 
   const drawer = (
     <div>
->>>>>>> Stashed changes
         <Toolbar>
           <Typography
             variant="h6"
@@ -50,7 +36,6 @@ export default function ResponsiveDrawer() {
             BGC icon
           </Typography>
         </Toolbar>
-<<<<<<< Updated upstream
         <Divider />
         <List>
           {['Collection', 'Community', 'High Scores'].map((text) => (
@@ -61,18 +46,6 @@ export default function ResponsiveDrawer() {
             </ListItem>
           ))}
         </List>
-        </Drawer>
-=======
-      <Divider />
-      <List>
-        {['Collection', 'Community', 'High Score'].map((text) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton href="/">
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
     </div>
   )
 
@@ -133,8 +106,9 @@ export default function ResponsiveDrawer() {
             {drawer}
           </Drawer>
         </Box>
->>>>>>> Stashed changes
       </Box>
     </ThemeProvider>
   );
 }
+
+export default ResponsiveDrawer;
