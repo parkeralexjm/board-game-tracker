@@ -15,7 +15,7 @@ export default function Home() {
         <meta name="description" content="A website for tracking board games" />
       </Head>
       <main>
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" sx={{ display: 'flex', p:0}} disableGutters>
           <Sidebar/>
           <Homepage/>
         </Container>
