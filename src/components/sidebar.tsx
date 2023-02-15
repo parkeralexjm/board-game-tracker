@@ -16,6 +16,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { ThemeProvider } from '@mui/material';
 import Button from '@mui/material/Button';
 import pageIndex from '@/utils/pageIndex';
+import Link from 'next/link';
 
 const drawerWidth = 240;
 
@@ -52,10 +53,10 @@ const ResponsiveDrawer = () => {
         </Toolbar>
         <Divider />
         <List>
-          {pages.map((page) => (
-            <ListItem key={page.name} disablePadding>
-              <ListItemButton component="a" href={page.route} color="primary">
-                <ListItemText primary={page.name} />
+          {pages.map((pages) => (
+            <ListItem key={pages.name} disablePadding>
+              <ListItemButton component="a" href={pages.id} color="primary">
+                <ListItemText primary={pages.name} />
               </ListItemButton>
             </ListItem>
           ))}

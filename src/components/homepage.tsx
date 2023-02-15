@@ -1,11 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import { Box } from '@mui/material';
 import { useUser } from '@auth0/nextjs-auth0/client';
 
 const Homepage = () => {
-
   const { user, error, isLoading } = useUser();
-
   // Make a loading component later to make this more interesting
   if (isLoading) return <div>Loading...</div>
   if (error) return <div>{error.message}</div>
@@ -13,7 +11,7 @@ const Homepage = () => {
   // If logged in then display a welcome message otherwise prompt user to login
   const renderWelcomeMessage = () => {
     if (user) {
-      return <h2>Welcome {user.nickname}</h2>
+      return <h2>Welcome {user.nickname} , here is a random game: </h2>
     } else {
       return <h2>Please login to your account</h2>
     }
@@ -25,8 +23,13 @@ const Homepage = () => {
           backgroundColor: '#b3e0dc',
           margin: 5
           }}>
-            {renderWelcomeMessage()}
-        </Box>
+            <Box>
+              {renderWelcomeMessage()}
+            </Box>
+            <Box>
+              
+            </Box>
+        </Box>  
       </Box>
     )
 }

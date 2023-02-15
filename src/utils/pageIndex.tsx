@@ -1,10 +1,7 @@
 const pageIndex = [
-  {name:'Collection', 
-    route:'/collection'},
-  {name:'Community', 
-    route: '/community'},
-  {name:'High Scores',
-    route: '/highscores'}
+  {name:'Collection', id:'/collection'},
+  {name:'Community', id: '/community'},
+  {name:'High Scores', id: '/highscores'}
 ]
 
 
