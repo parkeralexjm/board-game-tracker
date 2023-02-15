@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Box } from '@mui/material';
 import { useUser } from '@auth0/nextjs-auth0/client';
 
-const Homepage = () => {
+const Collection = () => {
 
   const { user, error, isLoading } = useUser();
 
@@ -11,9 +11,9 @@ const Homepage = () => {
   if (error) return <div>{error.message}</div>
 
   // If logged in then display a welcome message otherwise prompt user to login
-  const renderWelcomeMessage = () => {
+  const renderCollection = () => {
     if (user) {
-      return <h2>Welcome {user.nickname}</h2>
+      return <h2>This is where the persons collection will display</h2>
     } else {
       return <h2>Please login to your account</h2>
     }
@@ -21,14 +21,14 @@ const Homepage = () => {
 
   return (  
       <Box sx={{ width: "100vw", height: "100vh", backgroundColor: '#012835', pt:'64px', display:'flex', flexDirection: 'column'}}>
-        <Box aria-label="welcome-box" sx={{
+        <Box aria-label="collection-box" sx={{
           backgroundColor: '#b3e0dc',
           margin: 5
           }}>
-            {renderWelcomeMessage()}
+            {renderCollection()}
         </Box>
       </Box>
     )
 }
 
-export default Homepage;
+export default Collection;
