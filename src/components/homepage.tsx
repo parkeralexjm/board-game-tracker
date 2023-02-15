@@ -1,22 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 import { useUser } from '@auth0/nextjs-auth0/client';
 
+type Game = { name:string}
+
 const Homepage = () => {
+  const [randomGame, setRandomGame] = useState<{ count: number; games: Game[] }>()
+  useEffect(() => {
+    fetch('https://api.boardgameatlas.com/api/search?random=true&limit=1&client_id=p5N6VqtA3g')
+      .then(res => res.json())
+      .then(data => setRandomGame(data));
+  }, []);
+
+  // Make a loading component later to make this more interesting and reposition to the correct div
   const { user, error, isLoading } = useUser();
-  // Make a loading component later to make this more interesting
   if (isLoading) return <div>Loading...</div>
   if (error) return <div>{error.message}</div>
 
-  // If logged in then display a welcome message otherwise prompt user to login
-  const renderWelcomeMessage = () => {
-    if (user) {
-      return <h2>Welcome {user.nickname} , here is a random game: </h2>
-    } else {
-      return <h2>Please login to your account</h2>
-    }
-  }
+  console.log(randomGame)
 
+  
   return (  
       <Box sx={{ width: "100vw", height: "100vh", backgroundColor: '#012835', pt:'64px', display:'flex', flexDirection: 'column'}}>
         <Box aria-label="welcome-box" sx={{
@@ -24,10 +27,10 @@ const Homepage = () => {
           margin: 5
           }}>
             <Box>
-              {renderWelcomeMessage()}
+              {user ? <h2>Welcome {user.nickname}</h2> : <h2>Please login to your account</h2>}
             </Box>
             <Box>
-              
+              {randomGame ? <h2>Here is a random game: {randomGame.games[0].name}</h2> : <h2>Loading...</h2>}
             </Box>
         </Box>  
       </Box>
