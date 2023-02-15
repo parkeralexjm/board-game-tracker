@@ -1,21 +1,20 @@
 import * as React from 'react';
 import { Box } from '@mui/material';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import { useRouter } from 'next/router';
 
 const Collection = () => {
-
   const { user, error, isLoading } = useUser();
+  const router = useRouter();
 
   // Make a loading component later to make this more interesting
   if (isLoading) return <div>Loading...</div>
-  if (error) return <div>{error.message}</div>
+  if (!user) {router.push('/')}
 
-  // If logged in then display a welcome message otherwise prompt user to login
+  // If logged in then display a welcome message otherwise redirect to homepage
   const renderCollection = () => {
     if (user) {
-      return <h2>This is where the persons collection will display</h2>
-    } else {
-      return <h2>Please login to your account</h2>
+      return <h2>This is where the stuff will go to get and display the collection</h2>
     }
   }
 

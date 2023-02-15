@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 import { useUser } from '@auth0/nextjs-auth0/client';
 
-type Game = { name:string}
+type Games = { name:string, thumb_url: string}
 
 const Homepage = () => {
-  const [randomGame, setRandomGame] = useState<{ count: number; games: Game[] }>()
+  const [randomGame, setRandomGame] = useState<{ count: number; games: Games[] }>()
   useEffect(() => {
     fetch('https://api.boardgameatlas.com/api/search?random=true&limit=1&client_id=p5N6VqtA3g')
       .then(res => res.json())
@@ -15,11 +15,7 @@ const Homepage = () => {
   // Make a loading component later to make this more interesting and reposition to the correct div
   const { user, error, isLoading } = useUser();
   if (isLoading) return <div>Loading...</div>
-  if (error) return <div>{error.message}</div>
 
-  console.log(randomGame)
-
-  
   return (  
       <Box sx={{ width: "100vw", height: "100vh", backgroundColor: '#012835', pt:'64px', display:'flex', flexDirection: 'column'}}>
         <Box aria-label="welcome-box" sx={{
