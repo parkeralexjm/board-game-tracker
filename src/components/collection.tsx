@@ -4,7 +4,7 @@ import { useUser } from '@auth0/nextjs-auth0/client';
 import { useRouter } from 'next/router';
 
 const Collection = () => {
-  const { user, error, isLoading } = useUser();
+  const { user, isLoading } = useUser();
   const router = useRouter();
 
   // Make a loading component later to make this more interesting
@@ -13,9 +13,7 @@ const Collection = () => {
 
   // If logged in then display a welcome message otherwise redirect to homepage
   const renderCollection = () => {
-    if (user) {
       return <h2>This is where the stuff will go to get and display the collection</h2>
-    }
   }
 
   return (  
