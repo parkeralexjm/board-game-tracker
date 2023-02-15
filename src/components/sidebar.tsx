@@ -9,12 +9,12 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { mainTheme } from '@/themes/themes';
-
 import CssBaseline from '@mui/material/CssBaseline';
 import AppBar from '@mui/material/AppBar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { ThemeProvider } from '@mui/material';
+import Button from '@mui/material/Button';
 
 const drawerWidth = 240;
 
@@ -27,15 +27,25 @@ const ResponsiveDrawer = () => {
 
   const drawer = (
     <div>
-        <Toolbar>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-          >
-            BGC icon
-          </Typography>
+        <Toolbar sx={{display:'flex', justifyContent:'space-around'}}>
+          <Box>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/"
+            >  
+              BGC
+            </Typography>
+          </Box>
+          <Box sx={{display:'flex', flexDirection:'column', alignItems:'right', gap:'10px', py:'10px'}}>
+            <Button variant='contained' href="/api/auth/login">
+              Login
+            </Button>
+            <Button variant='outlined' href="/api/auth/logout"> 
+              Logout
+            </Button>
+          </Box>
         </Toolbar>
         <Divider />
         <List>
