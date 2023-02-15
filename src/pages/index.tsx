@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import { Inter } from '@next/font/google';
-import Header from '../components/header';
 import Container from '@mui/material/Container';
 import Sidebar from '@/components/sidebar';
+import Homepage from '@/components/homepage';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,8 +14,9 @@ export default function Home() {
         <meta name="description" content="A website for tracking board games" />
       </Head>
       <main>
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" sx={{ display: 'flex', p:0}} disableGutters>
           <Sidebar/>
+          <Homepage/>
         </Container>
       </main>
     </>
