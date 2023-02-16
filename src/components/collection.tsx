@@ -3,7 +3,7 @@ import { Box } from '@mui/material';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { useRouter } from 'next/router';
 import loginRedirect from '@/utils/loginRedirect';
-import { Background } from "@/styles/Background";
+import { Background, StyledMainBorder } from "@/styles/Background";
 
 const Collection = () => {
   const { user, isLoading } = useUser();
@@ -15,14 +15,11 @@ const Collection = () => {
   return (  
     <Background aria-label='collection-background'>  
       {user ? 
-        <Box aria-label="collection-box" sx={{
-          backgroundColor: '#2D5C62',
-          margin: 5
-          }}>
+        <StyledMainBorder aria-label="collection-box">
         <h2>This is where the stuff will go to get and display the collection</h2>
-      </Box> 
+      </StyledMainBorder> 
       // If no user then render an empty box
-      : <Box></Box>}
+      : <StyledMainBorder></StyledMainBorder>}
 
     </Background>
     )

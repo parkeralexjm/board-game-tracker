@@ -9,4 +9,15 @@ const Background = styled.div`
     flexDirection: column;
 `;
 
-export { Background };
+const StyledMainBorder = styled.div`
+    background-color: #2D5C62; 
+    margin: 2rem; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    width: 100%;
+    border-radius: 15px;
+    padding: 1rem;
+`;
+
+export { Background, StyledMainBorder };

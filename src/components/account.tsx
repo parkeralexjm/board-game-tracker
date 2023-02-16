@@ -1,4 +1,4 @@
-import { Background } from "@/styles/Background";
+import { Background, StyledMainBorder } from "@/styles/Background";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { Box } from "@mui/material";
 
@@ -14,12 +14,12 @@ const Account = () => {
 
   return (
       <Background aria-label="account-background">
-        <Box sx={{backgroundColor: '#2D5C62', width: '100%', margin: '2rem', borderRadius:'15px', padding:'1rem', display:"flex", flexDirection:"column", alignItems:"center" }}>
+        <StyledMainBorder>
           <img src={user?.picture!} alt={'user avatar'}></img>
           <h2>{user?.nickname}</h2>
           <h2>{user?.email}</h2>
           <h2>{user?.updated_at}</h2>
-        </Box>
+        </StyledMainBorder>
       </Background>
   )
 }
