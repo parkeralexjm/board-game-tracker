@@ -49,7 +49,7 @@ const ResponsiveDrawer = () => {
           </Box>
         </Toolbar>
         <Divider />
-        <Box sx={{backgroundColor: '#583865', marginX: '10px', height: '100%', borderRadius: '15px'}}>
+        <Box sx={{backgroundColor: '#583865', marginX: '10px', borderRadius: '15px'}}>
           <List>
             {pageIndex.map((pages) => (
               <ListItem key={pages.name} disablePadding>
