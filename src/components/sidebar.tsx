@@ -26,8 +26,6 @@ const ResponsiveDrawer = () => {
     setMobileOpen(!mobileOpen);
   }
 
-  const pages = pageIndex;
-
   const drawer = (
     <div>
         <Toolbar sx={{display:'flex', justifyContent:'space-around'}}>
@@ -52,7 +50,7 @@ const ResponsiveDrawer = () => {
         </Toolbar>
         <Divider />
         <List>
-          {pages.map((pages) => (
+          {pageIndex.map((pages) => (
             <ListItem key={pages.name} disablePadding>
               <ListItemButton component="a" href={`/${pages.id}`} color="primary">
                 <ListItemText primary={pages.name} />

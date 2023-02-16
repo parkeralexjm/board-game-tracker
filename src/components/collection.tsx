@@ -2,19 +2,14 @@ import * as React from 'react';
 import { Box } from '@mui/material';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { useRouter } from 'next/router';
+import loginRedirect from '@/utils/loginRedirect';
 
 const Collection = () => {
   const { user, isLoading } = useUser();
   const router = useRouter();
 
   // Make a loading component later to make this more interesting
-  if (isLoading) return <div>Loading...</div>
-  if (!user) {router.push('/')}
-
-  // If logged in then display a welcome message otherwise redirect to homepage
-  const renderCollection = () => {
-      return <h2>This is where the stuff will go to get and display the collection</h2>
-  }
+  loginRedirect(user, isLoading, router)
 
   return (  
       <Box sx={{ width: "100vw", height: "100vh", backgroundColor: '#012835', pt:'64px', display:'flex', flexDirection: 'column'}}>
@@ -22,7 +17,7 @@ const Collection = () => {
           backgroundColor: '#b3e0dc',
           margin: 5
           }}>
-            {renderCollection()}
+            <h2>This is where the stuff will go to get and display the collection</h2>
         </Box>
       </Box>
     )
