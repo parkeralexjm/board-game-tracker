@@ -14,8 +14,11 @@ const Account = () => {
 
   return (
       <Background aria-label="account-background">
-        <Box sx={{backgroundColor: '#2D5C62', width: '100%', margin: '2rem', borderRadius:'15px', padding:'1rem' }}>
-          <h2>This is your account info</h2>
+        <Box sx={{backgroundColor: '#2D5C62', width: '100%', margin: '2rem', borderRadius:'15px', padding:'1rem', display:"flex", flexDirection:"column", alignItems:"center" }}>
+          <img src={user?.picture!} alt={'user avatar'}></img>
+          <h2>{user?.nickname}</h2>
+          <h2>{user?.email}</h2>
+          <h2>{user?.updated_at}</h2>
         </Box>
       </Background>
   )
