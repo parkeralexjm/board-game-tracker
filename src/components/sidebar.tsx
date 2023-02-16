@@ -27,7 +27,7 @@ const ResponsiveDrawer = () => {
   }
 
   const drawer = (
-    <div>
+    <> 
         <Toolbar sx={{display:'flex', justifyContent:'space-around'}}>
           <Box>
             <Typography
@@ -49,16 +49,18 @@ const ResponsiveDrawer = () => {
           </Box>
         </Toolbar>
         <Divider />
-        <List>
-          {pageIndex.map((pages) => (
-            <ListItem key={pages.name} disablePadding>
-              <ListItemButton component="a" href={`/${pages.id}`} color="primary">
-                <ListItemText primary={pages.name} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-    </div>
+        <Box sx={{backgroundColor: '#583865', marginX: '10px', height: '100%', borderRadius: '15px'}}>
+          <List>
+            {pageIndex.map((pages) => (
+              <ListItem key={pages.name} disablePadding>
+                <ListItemButton component="a" href={`/${pages.id}`} color="primary">
+                  <ListItemText primary={pages.name} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+    </>
   )
 
   return (

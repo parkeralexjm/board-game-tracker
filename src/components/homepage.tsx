@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Paper from '@mui/material/Paper';
+import { Background } from "@/styles/Background";
 
 type Games = { name:string, image_url: string}
 
@@ -18,7 +19,7 @@ const Homepage = () => {
   if (isLoading) return <div>Loading...</div>
 
   return (  
-      <Box sx={{ width: "100vw", height: "100vh", backgroundColor: '#012835', pt:'64px', display:'flex', flexDirection: 'column'}}>
+      <Background aria-label='homepage-background'>
         <Box aria-label="welcome-box" sx={{backgroundColor: '#b3e0dc', margin: 5}}>
             <Box>
               {user ? <h2>Welcome {user.nickname}</h2> : <h2>Please login to your account</h2>}
@@ -34,10 +35,11 @@ const Homepage = () => {
                     <img src={randomGame.games[0].image_url} alt={''} width={'200px'} height={'200px'}/>
                   </Paper>
                 </Box> 
+              // If not loaded yet then display Loading...
               : <h2>Loading...</h2>}
             </Box>
         </Box>  
-      </Box>
+      </Background>
     )
 }
 

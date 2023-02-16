@@ -1,5 +1,5 @@
 const pageIndex = [
-  {name:'Profile', id:'profile'},
+  {name:'Account', id:'account'},
   {name:'Collection', id:'collection'},
   {name:'Community', id: 'community'},
   {name:'High Scores', id: 'highscores'}

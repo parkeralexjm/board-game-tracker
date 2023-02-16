@@ -2,3 +2,8 @@ To Do
 1. Work out how to link the auth0 logins with the database from board game atlas
 2. Create the community page
 3. Work out how to store a friends list
+4. Rework the routing so that it prevents users from rendering pages they shouldn't be able to
+
+Current issues:
+Currently users are able to click links to pages that required them to be signed in. The user then is sent to the page where it checks if they are signed in then sends the user back.
+This can be more elegantly solved by using routing/privateroutes?
