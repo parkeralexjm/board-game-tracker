@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { Box } from '@mui/material';
+import { Box, CircularProgress } from '@mui/material';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Paper from '@mui/material/Paper';
 import { Background, StyledMainBorder } from "@/styles/Background";
+import axios from 'axios';
 
 type Games = { name:string, image_url: string}
 
 const Homepage = () => {
   const [randomGame, setRandomGame] = useState<{ count: number; games: Games[] }>()
+  const randomGameURL = 'https://api.boardgameatlas.com/api/search?random=true&limit=1&client_id=p5N6VqtA3g'
 
   useEffect(() => {
-    fetch('https://api.boardgameatlas.com/api/search?random=true&limit=1&client_id=p5N6VqtA3g')
-      .then(res => res.json())
-      .then(data => setRandomGame(data));
+    axios.get(randomGameURL).then((response) =>{
+      setRandomGame(response.data)
+    })
   },[]);
 
   // Make a loading component later to make this more interesting and reposition to the correct div
   const { user, isLoading } = useUser();
-  if (isLoading) return <div>Loading...</div>
+  if (isLoading) return <CircularProgress color="primary" />
 
   return (  
       <Background aria-label='homepage-background'>
@@ -37,7 +39,7 @@ const Homepage = () => {
                   </Paper>
                 </Box> 
               // If not loaded yet then display Loading...
-              : <h2>Loading...</h2>}
+              : <CircularProgress color="primary" />}
             </Box>
         </StyledMainBorder>  
       </Background>

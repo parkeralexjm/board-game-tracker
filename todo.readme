@@ -10,3 +10,7 @@ Currently users are able to click links to pages that required them to be signed
 This can be more elegantly solved by using routing/privateroutes?
 
 Weird issue using <img> with ESLint. If i change it to <Image> then i get the error: JSX element class does not support attributes because it does not have a 'props' property.ts(2607)
+
+Resolved issues:
+useEffect on the Homepage is triggering twice and retriggering the random game fetcher
+(this only seems to trigger when running the server in dev mode on purpose because of StrictMode) - Works fine with yarn start
