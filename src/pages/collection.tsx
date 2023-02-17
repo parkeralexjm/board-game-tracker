@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { Inter } from '@next/font/google';
 import Container from '@mui/material/Container';
 import Sidebar from '@/components/sidebar';
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { Background, StyledMainBorder } from '@/styles/Background';
 
 const inter = Inter({ subsets: ['latin'] })
@@ -33,4 +33,6 @@ const UserCollection = () => {
   )
 }
 
-export default UserCollection;
+export default withPageAuthRequired(UserCollection, {
+  onRedirecting: () => <></>
+})
