@@ -2,11 +2,15 @@ import Head from 'next/head';
 import { Inter } from '@next/font/google';
 import Container from '@mui/material/Container';
 import Sidebar from '@/components/sidebar';
-import Account from '@/components/account';
+import { useUser } from '@auth0/nextjs-auth0/client';
+import { Background, StyledMainBorder } from '@/styles/Background';
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+const UserAccount = () => {
+  const { user, isLoading } = useUser();
+  if (isLoading) return <div>Loading...</div>
+  
   return (
     <>
       <Head>
@@ -16,9 +20,18 @@ export default function Home() {
       <main>
         <Container maxWidth="xl" sx={{ display: 'flex', p:0}} disableGutters>
           <Sidebar/>
-          <Account/>
+          <Background aria-label="account-background">
+            <StyledMainBorder>
+              <img src={user?.picture!} alt={'user avatar'}></img>
+              <h2>{user?.nickname}</h2>
+              <h2>{user?.email}</h2>
+              <h2>{user?.updated_at}</h2>
+            </StyledMainBorder>
+          </Background>
         </Container>
       </main>
     </>
   )
 }
+
+export default UserAccount;
