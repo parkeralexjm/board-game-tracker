@@ -4,10 +4,11 @@ import Container from '@mui/material/Container';
 import Sidebar from '@/components/sidebar';
 import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { Background, StyledMainBorder } from '@/styles/Background';
+import Button from '@mui/material/Button';
 
 const inter = Inter({ subsets: ['latin'] })
 
-const UserAccount = () => {
+const Community = () => {
   const { user, isLoading } = useUser();
   if (isLoading) return <div>Loading...</div>
  
@@ -22,10 +23,7 @@ const UserAccount = () => {
           <Sidebar/>
           <Background aria-label="account-background">
             <StyledMainBorder>
-              <img src={user?.picture!} alt={'user avatar'}></img>
-              <h2>{user?.nickname}</h2>
-              <h2>{user?.email}</h2>
-              <h2>{user?.updated_at}</h2>
+              <h2>Users</h2>
             </StyledMainBorder>
           </Background>
         </Container>
@@ -34,6 +32,6 @@ const UserAccount = () => {
   )
 }
 
-export default withPageAuthRequired(UserAccount, {
+export default withPageAuthRequired(Community, {
   onRedirecting: () => <></>
 })

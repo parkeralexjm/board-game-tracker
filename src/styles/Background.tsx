@@ -20,4 +20,14 @@ const StyledMainBorder = styled.div`
     padding: 1rem;
 `;
 
-export { Background, StyledMainBorder };
+const StyledCollectionBorder = styled.div`
+    background-color: #2D5C62; 
+    margin: 2rem; 
+    display: flex; 
+    flex-direction: column; 
+    width: 100%;
+    border-radius: 15px;
+    padding: 1rem;
+`;
+
+export { Background, StyledMainBorder, StyledCollectionBorder };

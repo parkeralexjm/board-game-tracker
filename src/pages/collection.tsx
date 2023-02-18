@@ -2,11 +2,13 @@ import Head from 'next/head';
 import { Inter } from '@next/font/google';
 import Container from '@mui/material/Container';
 import Sidebar from '@/components/sidebar';
-import Collection from '@/components/collection';
+import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0/client';
+import { Background, StyledCollectionBorder, StyledMainBorder } from '@/styles/Background';
+import MyCollection from '@/components/myCollection';
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+const UserCollection = () => {
   return (
     <>
       <Head>
@@ -16,9 +18,17 @@ export default function Home() {
       <main>
         <Container maxWidth="xl" sx={{ display: 'flex', p:0}} disableGutters>
           <Sidebar/>
-          <Collection/>
+          <Background aria-label='collection-background'>  
+              <StyledCollectionBorder aria-label="collection-box">
+                <MyCollection/>
+              </StyledCollectionBorder> 
+          </Background>
         </Container>
       </main>
     </>
   )
 }
+
+export default withPageAuthRequired(UserCollection, {
+  onRedirecting: () => <></>
+})

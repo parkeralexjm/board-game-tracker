@@ -2,12 +2,8 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
 import { mainTheme } from '@/themes/themes';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppBar from '@mui/material/AppBar';
@@ -15,7 +11,8 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { ThemeProvider } from '@mui/material';
 import Button from '@mui/material/Button';
-import pageIndex from '@/utils/pageIndex';
+import { PagesRoute } from '@/utils/routing';
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 const drawerWidth = 240;
 
@@ -26,40 +23,31 @@ const ResponsiveDrawer = () => {
     setMobileOpen(!mobileOpen);
   }
 
+  const { user } = useUser()
+
   const drawer = (
     <> 
-        <Toolbar sx={{display:'flex', justifyContent:'space-around'}}>
-          <Box>
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="/"
-            >  
-              BGC
-            </Typography>
-          </Box>
-          <Box sx={{display:'flex', flexDirection:'column', alignItems:'right', gap:'10px', py:'10px'}}>
-            <Button variant='contained' href="/api/auth/login">
-              Login
-            </Button>
-            <Button variant='outlined' href="/api/auth/logout"> 
-              Logout
-            </Button>
-          </Box>
-        </Toolbar>
-        <Divider />
-        <Box sx={{backgroundColor: '#583865', marginX: '10px', borderRadius: '15px'}}>
-          <List>
-            {pageIndex.map((pages) => (
-              <ListItem key={pages.name} disablePadding>
-                <ListItemButton component="a" href={`/${pages.id}`} color="primary">
-                  <ListItemText primary={pages.name} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
+      <Toolbar sx={{display:'flex', justifyContent:'space-around'}}>
+        <Box>
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+          >  
+            BGC
+          </Typography>
         </Box>
+        <Box sx={{display:'flex', flexDirection:'column', alignItems:'right', gap:'10px', py:'10px'}}>
+          {!user ? 
+          <Button variant='contained' href="/api/auth/login">Login</Button> : 
+          <Button variant='outlined' href="/api/auth/logout">Logout</Button>}
+        </Box>
+      </Toolbar>
+      <Divider />
+      <Box sx={{backgroundColor: '#583865', marginX: '10px', borderRadius: '15px'}}>
+        <PagesRoute/>
+      </Box>
     </>
   )
 
