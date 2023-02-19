@@ -10,7 +10,7 @@ type Game = {name:string, plays: number, recommended: boolean, thumb_url: string
 
 const gameDisplay = (game: Game) => {
   return (
-    <Card key={game.name} variant={"outlined"} sx={{minWidth: 200}}>
+    <Card key={game.name} variant={"outlined"} sx={{width: 200}}>
       <CardMedia
       sx={{ height: 150}}
       image={game.thumb_url}

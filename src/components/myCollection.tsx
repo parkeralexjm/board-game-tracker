@@ -1,32 +1,40 @@
 import Box from "@mui/material/Box";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, doc, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { app, database } from "../../firebase_config"
+import { db } from "../../firebase_config"
 import exampleCollection from "@/utils/exampleCollection";
 import GameDisplay from "./GameDisplay";
+import { Button } from "@mui/material";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
-// const dbInstance = collection(database, 'users')
+type Game = {'name':string; plays: number; recommended: boolean; thumb_url: string;}
 
 const MyCollection =() => {
-  const [ collectionArray, setCollectionArray] = useState<{}>([])
+  const { user } = useUser();
+  const collectionInstance = collection(db, `/users/${user?.nickname}/games`)
+  const [ collectionArray, setCollectionArray] = useState<{}[]>([])
 
-  // Commented while quota is exceeded
-  // useEffect(() => {
-  //   getDocs(dbInstance)
-  //   .then((data) => {
-  //     setCollectionArray(data.docs.map((item) => {
-  //       return { ...item.data(), id: item.id}
-  //     }))
-  //   })
-  // },[])
+  useEffect(() => {
+    getDocs(collectionInstance)
+    .then((data) => {
+      setCollectionArray(data.docs.map((item) => {
+        return { ...item.data(), id: item.id}
+      }))
+    })
+  },[])
+
+  const loadData = () => {
+    console.log(collectionArray)
+  }
 
   return (
     <>
-      <Box sx={{ display: "flex", gap: 2}}>
-        {exampleCollection.map((game) => (
+      <Box sx={{ display: "flex", gap: 2, flexWrap: 'wrap'}}>
+        {collectionArray.map((game) => (
         GameDisplay(game)
-      ))}
+        ))}
       </Box>
+      <Button variant="contained" onClick={loadData}/>
     </>
   )
 }
