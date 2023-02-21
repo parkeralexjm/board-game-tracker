@@ -9,6 +9,7 @@ import MyCollection from '@/components/myCollection';
 const inter = Inter({ subsets: ['latin'] })
 
 const UserCollection = () => {
+
   return (
     <>
       <Head>

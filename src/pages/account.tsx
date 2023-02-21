@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ['latin'] })
 const UserAccount = () => {
   const { user, isLoading } = useUser();
   if (isLoading) return <div>Loading...</div>
- 
+
   return (
     <>
       <Head>
