@@ -14,11 +14,11 @@ const [searchInput, setSearchInput] = useState('')
 
   return (
     <Paper
-    component="form"
-    sx={{ pl: '4px', display: 'flex', alignItems: 'center', width: 400, backgroundColor: '#FA9B13', borderRadius: '30px' }}
-  >
+      component="form"
+      sx={{ pl: '4px', display: 'flex', alignItems: 'center', width: 400, backgroundColor: '#FA9B13', borderRadius: '30px' }}
+    >
       <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
-      <SearchIcon />
+        <SearchIcon />
       </IconButton>
       <InputBase
       sx={{ ml: 1, flex: 1 }}
