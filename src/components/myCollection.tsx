@@ -2,12 +2,9 @@ import Box from "@mui/material/Box";
 import { collection, doc, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../../firebase_config"
-import exampleCollection from "@/utils/exampleCollection";
 import GameDisplay from "./GameDisplay";
 import { Button } from "@mui/material";
 import { useUser } from "@auth0/nextjs-auth0/client";
-
-type Game = {'name':string; plays: number; recommended: boolean; thumb_url: string;}
 
 const MyCollection =() => {
   const { user } = useUser();

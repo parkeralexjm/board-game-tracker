@@ -1,6 +1,8 @@
 To Do
 1. Work out how to store a friends list
 2. Extend the sidebar style to the bottom of the page
+3. Give users the ability to search for a game and give the option to include it in their collection
+4. Add a remove button to the collection to allow users to remove games from the collection
 
 Current issues:
 Collections takes forever (4+ seconds) to be compiled

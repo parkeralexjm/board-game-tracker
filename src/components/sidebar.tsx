@@ -13,6 +13,7 @@ import { ThemeProvider } from '@mui/material';
 import Button from '@mui/material/Button';
 import { PagesRoute } from '@/utils/routing';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import SearchBar from './SearchBar';
 
 const drawerWidth = 240;
 
@@ -73,7 +74,7 @@ const ResponsiveDrawer = () => {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap component="div">
-              placeholder text
+              <SearchBar/>
             </Typography>
           </Toolbar>
         </AppBar>
