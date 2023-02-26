@@ -2,7 +2,6 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import { mainTheme } from '@/themes/themes';
@@ -13,6 +12,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { ThemeProvider } from '@mui/material';
 import Button from '@mui/material/Button';
 import { PagesRoute } from '@/utils/routing';
+import { useUser } from '@auth0/nextjs-auth0/client';
+import SearchBar from './SearchBar';
 
 const drawerWidth = 240;
 
@@ -22,6 +23,8 @@ const ResponsiveDrawer = () => {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   }
+
+  const { user } = useUser()
 
   const drawer = (
     <> 
@@ -37,12 +40,9 @@ const ResponsiveDrawer = () => {
           </Typography>
         </Box>
         <Box sx={{display:'flex', flexDirection:'column', alignItems:'right', gap:'10px', py:'10px'}}>
-          <Button variant='contained' href="/api/auth/login">
-            Login
-          </Button>
-          <Button variant='outlined' href="/api/auth/logout"> 
-            Logout
-          </Button>
+          {!user ? 
+          <Button variant='contained' href="/api/auth/login">Login</Button> : 
+          <Button variant='outlined' href="/api/auth/logout">Logout</Button>}
         </Box>
       </Toolbar>
       <Divider />
@@ -74,7 +74,7 @@ const ResponsiveDrawer = () => {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap component="div">
-              placeholder text
+              <SearchBar/>
             </Typography>
           </Toolbar>
         </AppBar>
