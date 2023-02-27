@@ -1,31 +1,35 @@
+/* eslint-disable @next/next/no-img-element */
 import { Favorite, FavoriteOutlined } from "@mui/icons-material";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
+import zIndex from "@mui/material/styles/zIndex";
+import { Box } from "@mui/system";
+import Image from "next/image";
+import frame from '../assets/Frame.png'
 
 type Game = {name:string, plays: number, recommended: boolean, thumb_url: string}
 
 const gameDisplay = (game: Game) => {
   return (
-    <Card key={game.name} variant={"outlined"} sx={{width: 200}}>
-      <CardMedia
-      sx={{ height: 150}}
-      image={game.thumb_url}
-      title={game.name}
+    <Box key={game.name} sx={{width: 200, height: 300, display: "flex", flexDirection: 'column' }}>
+      <img
+        src={game.thumb_url} alt={""}      
+        width={200}
+        height={200}
+        className='rounded-corner'
       />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {game.name}
-        </Typography>
-      </CardContent>
-      <CardActions>
-      <h3>Played {game.plays} times</h3>
-      {game.recommended === true ? <IconButton><Favorite/></IconButton> : <IconButton><FavoriteOutlined/></IconButton> }
-      </CardActions>
-    </Card>
+      <Image 
+        width={200}
+        height={300}
+        src={frame} alt={""}
+        style={{ position:"absolute" }}
+      />
+      <Box display={"flex"} flexDirection={'column'} alignItems={'center'} textAlign={'center'} zIndex={100}>
+        {game.name}
+        <Box sx={{height: '3px', width: 100, backgroundColor: 'darkGrey', borderRadius: '5px'}}/>
+        Plays: {game.plays}
+        <Box sx={{height: '3px', width: 100, backgroundColor: 'darkGrey', borderRadius: '5px'}}/>
+        {game.recommended ? <Favorite/> : <FavoriteOutlined/> }
+      </Box>
+    </Box>
   )
 }
 

@@ -31,7 +31,6 @@ const MyCollection =() => {
         GameDisplay(game)
         ))}
       </Box>
-      <Button variant="contained" onClick={loadData}/>
     </>
   )
 }
