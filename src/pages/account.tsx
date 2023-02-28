@@ -3,7 +3,7 @@ import { Inter } from '@next/font/google';
 import Container from '@mui/material/Container';
 import Sidebar from '@/components/sidebar';
 import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0/client';
-import { Background, StyledMainBorder } from '@/styles/Background';
+import { Background, StyledMainBorder } from '@/styles/StyledComponents';
 
 const inter = Inter({ subsets: ['latin'] })
 

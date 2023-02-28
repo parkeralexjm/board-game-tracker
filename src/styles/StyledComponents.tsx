@@ -30,4 +30,32 @@ const StyledCollectionBorder = styled.div`
     padding: 1rem;
 `;
 
-export { Background, StyledMainBorder, StyledCollectionBorder };
+const StyledGameBorder = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 100;
+`;
+
+const StyledGameDivider = styled.div`
+    height: 3px;
+    width: 100px;
+    background-color: #6B6A69;
+    border-radius: 5px;
+`
+
+const StyledGameOutline = styled.div`
+    width: 200px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+`
+
+export { 
+    Background, 
+    StyledMainBorder, 
+    StyledCollectionBorder, 
+    StyledGameBorder, 
+    StyledGameDivider,
+    StyledGameOutline };
