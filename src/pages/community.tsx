@@ -4,14 +4,13 @@ import Container from '@mui/material/Container';
 import Sidebar from '@/components/sidebar';
 import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { Background, StyledMainBorder } from '@/styles/StyledComponents';
-import Button from '@mui/material/Button';
 import { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from 'firebase_config';
 import Box from '@mui/material/Box';
+import UserDisplay from '@/components/UserDisplay';
 
 const inter = Inter({ subsets: ['latin'] })
-type User = { name: string }
 
 const Community = () => {
   const { user, isLoading } = useUser();
@@ -42,7 +41,9 @@ const Community = () => {
           <Background aria-label="account-background">
             <StyledMainBorder>
               <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap"}}>
-                
+                {userArray.map((user) => (
+                  UserDisplay(user)
+                ))}
               </Box>
             </StyledMainBorder>
           </Background>
