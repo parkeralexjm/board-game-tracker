@@ -4,9 +4,9 @@ import { Favorite, FavoriteOutlined } from "@mui/icons-material";
 import Image from "next/image";
 import frame from '../assets/Frame.png'
 
-type Game = {name:string, plays: number, recommended: boolean, thumb_url: string}
+// type Game = {name:string, plays: number, recommended: boolean, thumb_url: string}
 
-const gameDisplay = (game: Game) => {
+const gameDisplay = (game: any) => {
   return (
     <StyledGameOutline>
       <img

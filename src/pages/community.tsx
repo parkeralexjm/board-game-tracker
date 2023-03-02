@@ -5,12 +5,30 @@ import Sidebar from '@/components/sidebar';
 import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { Background, StyledMainBorder } from '@/styles/StyledComponents';
 import Button from '@mui/material/Button';
+import { useEffect, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from 'firebase_config';
+import Box from '@mui/material/Box';
 
 const inter = Inter({ subsets: ['latin'] })
+type User = { name: string }
 
 const Community = () => {
   const { user, isLoading } = useUser();
+  const userInstance = collection(db, `/users`)
+  const [userArray, setUserArray] = useState<{}[]>([])
+  
+  useEffect(() => {
+    getDocs(userInstance)
+    .then((data) => {
+      setUserArray(data.docs.map((item) => {
+        return { ...item.data(), id: item.id}
+      }))
+    })
+  },[])
+
   if (isLoading) return <div>Loading...</div>
+  
  
   return (
     <>
@@ -23,7 +41,9 @@ const Community = () => {
           <Sidebar/>
           <Background aria-label="account-background">
             <StyledMainBorder>
-              <h2>Users</h2>
+              <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap"}}>
+                
+              </Box>
             </StyledMainBorder>
           </Background>
         </Container>
