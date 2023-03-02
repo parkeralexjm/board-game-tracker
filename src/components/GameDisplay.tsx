@@ -1,31 +1,34 @@
+/* eslint-disable @next/next/no-img-element */
+import { StyledGameBorder, StyledGameDivider, StyledGameOutline } from "@/styles/StyledComponents";
 import { Favorite, FavoriteOutlined } from "@mui/icons-material";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
+import Image from "next/image";
+import frame from '../assets/Frame.png'
 
-type Game = {name:string, plays: number, recommended: boolean, thumb_url: string}
+// type Game = {name:string, plays: number, recommended: boolean, thumb_url: string}
 
-const gameDisplay = (game: Game) => {
+const gameDisplay = (game: any) => {
   return (
-    <Card key={game.name} variant={"outlined"} sx={{width: 200}}>
-      <CardMedia
-      sx={{ height: 150}}
-      image={game.thumb_url}
-      title={game.name}
+    <StyledGameOutline>
+      <img
+        src={game.thumb_url} alt={""}      
+        width={200}
+        height={200}
+        className='rounded-corner'
       />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {game.name}
-        </Typography>
-      </CardContent>
-      <CardActions>
-      <h3>Played {game.plays} times</h3>
-      {game.recommended === true ? <IconButton><Favorite/></IconButton> : <IconButton><FavoriteOutlined/></IconButton> }
-      </CardActions>
-    </Card>
+      <Image 
+        width={200}
+        height={300}
+        src={frame} alt={""}
+        style={{ position:"absolute" }}
+      />
+      <StyledGameBorder>
+        {game.name}
+        <StyledGameDivider/>
+        Plays: {game.plays}
+        <StyledGameDivider/>
+        {game.recommended ? <Favorite/> : <FavoriteOutlined/> }
+      </StyledGameBorder>
+    </StyledGameOutline>
   )
 }
 

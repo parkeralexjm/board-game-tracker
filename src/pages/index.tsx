@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import CircularProgress from '@mui/material/CircularProgress';
-import { Background, StyledMainBorder } from '@/styles/Background';
+import { Background, StyledMainBorder } from '@/styles/StyledComponents';
 import { Box, Paper } from '@mui/material';
 
 const inter = Inter({ subsets: ['latin'] })
