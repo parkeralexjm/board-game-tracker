@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 const Background = styled.div`
     width: 100vw; 
-    height: 100vh;
+    min-height: 100vh;
     background-color: #012835 ;
     padding-top:64px;
     display: flex;
@@ -43,14 +43,15 @@ const StyledGameDivider = styled.div`
     width: 100px;
     background-color: #6B6A69;
     border-radius: 5px;
-`
+`;
 
 const StyledGameOutline = styled.div`
     width: 200px;
     height: 300px;
     display: flex;
     flex-direction: column;
-`
+    align-items: center;
+`;
 
 export { 
     Background, 

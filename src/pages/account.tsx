@@ -25,12 +25,11 @@ const UserAccount = () => {
             <StyledMainBorder>
               <Image 
               width={200}
-              height={300}
+              height={200}
               src={user?.picture!} alt={'user avatar'}>
               </Image>
               <h2>{user?.nickname}</h2>
               <h2>{user?.email}</h2>
-              <h2>{user?.updated_at}</h2>
             </StyledMainBorder>
           </Background>
         </Container>
