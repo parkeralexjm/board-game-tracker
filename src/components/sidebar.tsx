@@ -11,9 +11,12 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { ThemeProvider } from '@mui/material';
 import Button from '@mui/material/Button';
-import { PagesRoute } from '@/utils/routing';
+import { PageRoute } from '@/utils/pagerouting';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import SearchBar from './SearchBar';
+import Image from 'next/image';
+import logo from '../assets/tempLogo.png'
+import Link from 'next/link';
 
 const drawerWidth = 240;
 
@@ -29,15 +32,10 @@ const ResponsiveDrawer = () => {
   const drawer = (
     <> 
       <Toolbar sx={{display:'flex', justifyContent:'space-around'}}>
-        <Box>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-          >  
-            BGC
-          </Typography>
+        <Box sx={{mt:1}}>
+          <Link href={'/'}>
+            <Image src={logo} alt='main logo' width={64} height={64} />
+          </Link>
         </Box>
         <Box sx={{display:'flex', flexDirection:'column', alignItems:'right', gap:'10px', py:'10px'}}>
           {!user ? 
@@ -47,7 +45,7 @@ const ResponsiveDrawer = () => {
       </Toolbar>
       <Divider />
       <Box sx={{backgroundColor: '#583865', marginX: '10px', borderRadius: '15px'}}>
-        <PagesRoute/>
+        <PageRoute/>
       </Box>
     </>
   )
