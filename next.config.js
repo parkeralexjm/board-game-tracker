@@ -9,6 +9,12 @@ const nextConfig = {
         port: '',
         pathname: '/avatar/**'
       },
+      {
+        protocol: 'https',
+        hostname: 's3-us-west-1.amazonaws.com',
+        port: '',
+        pathname: '/**'
+      }
     ],
   },
 }

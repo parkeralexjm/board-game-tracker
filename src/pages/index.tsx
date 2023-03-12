@@ -2,30 +2,26 @@ import Head from 'next/head';
 import { Inter } from '@next/font/google';
 import Container from '@mui/material/Container';
 import Sidebar from '@/components/sidebar';
-import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Background, StyledMainBorder } from '@/styles/StyledComponents';
 import { Box, Paper } from '@mui/material';
+import { GetServerSideProps } from 'next';
+import Image from "next/image";
 
-const inter = Inter({ subsets: ['latin'] })
-type Games = { name:string, image_url: string}
+const inter = Inter({ subsets: ['latin'] });
+type Game = { name:string, image_url: string };
 
-const Home = () => {
-  const [randomGame, setRandomGame] = useState<{ count: number; games: Games[] }>()
-  const randomGameURL = 'https://api.boardgameatlas.com/api/search?random=true&limit=1&client_id=p5N6VqtA3g'
+interface Props {
+  randomGame?: Game;
+}
 
-  useEffect(() => {
-    axios.get(randomGameURL).then((response) =>{
-      setRandomGame(response.data)
-    })
-  },[]);
-
+const Home = ({ randomGame }: Props) => {
   // Make a loading component later to make this more interesting and reposition to the correct div
   const { user, isLoading } = useUser();
   if (isLoading) return <CircularProgress color="primary" />
-  
+
   return (
     <>
       <Head>
@@ -37,29 +33,49 @@ const Home = () => {
           <Sidebar/>
           <Background aria-label='homepage-background'>
             <StyledMainBorder aria-label="welcome-box">
+              <Box>
+                {user ? <h2>Welcome {user.nickname}</h2> : <h2>Please login to your account</h2>}
+              </Box>
+              {randomGame && (
                 <Box>
-                  {user ? <h2>Welcome {user.nickname}</h2> : <h2>Please login to your account</h2>}
+                  <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                    <h2>
+                      Here is a random game: {randomGame.name}
+                    </h2>
+                    <Paper variant="outlined">
+                      <Image
+                        src={randomGame.image_url}
+                        alt={randomGame.name}
+                        width={200}
+                        height={200}
+                      />
+                    </Paper>
+                  </Box>
                 </Box>
-                <Box>
-                  {randomGame ? 
-                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                      <h2>
-                        Here is a random game: {randomGame.games[0].name}
-                      </h2>
-                      <Paper variant="outlined">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={randomGame.games[0].image_url} alt={''} width={'200px'} height={'200px'}/>
-                      </Paper>
-                    </Box> 
-                  // If not loaded yet then display Loading...
-                  : <CircularProgress color="primary" />}
-                </Box>
-            </StyledMainBorder>  
+              )}
+            </StyledMainBorder>
           </Background>
         </Container>
       </main>
     </>
   )
+}
+
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
+  try {
+    const randomGameURL = 'https://api.boardgameatlas.com/api/search?random=true&limit=1&client_id=p5N6VqtA3g';
+    const response = await axios.get<{ games: Game[] }>(randomGameURL);
+
+    return {
+      props: {
+        randomGame: response?.data.games[0],
+      }
+    }
+  } catch (e) {
+    return {
+      props: {}
+    };
+  }
 }
 
 export default Home;
