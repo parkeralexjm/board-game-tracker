@@ -28,7 +28,6 @@ const Community = () => {
 
   if (isLoading) return <div>Loading...</div>
   
- 
   return (
     <>
       <Head>
