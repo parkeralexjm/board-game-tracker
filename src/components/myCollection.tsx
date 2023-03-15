@@ -3,7 +3,6 @@ import { collection, doc, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../../firebase_config"
 import GameDisplay from "./GameDisplay";
-import { Button } from "@mui/material";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
 const MyCollection =() => {
@@ -19,10 +18,6 @@ const MyCollection =() => {
       }))
     })
   },[])
-
-  const loadData = () => {
-    console.log(collectionArray)
-  }
 
   return (
     <>

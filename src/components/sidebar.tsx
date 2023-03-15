@@ -33,7 +33,7 @@ const ResponsiveDrawer = () => {
     <> 
       <Toolbar sx={{display:'flex', justifyContent:'space-around'}}>
         <Box sx={{mt:1}}>
-          <Link href={'/'}>
+          <Link href={'/collection'}>
             <Image src={logo} alt='main logo' width={64} height={64} />
           </Link>
         </Box>
