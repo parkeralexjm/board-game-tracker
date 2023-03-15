@@ -13,7 +13,7 @@ const UserCollection = () => {
   return (
     <>
       <Head>
-        <title>Board Game Tracker</title>
+        <title>Board Game Tracker | Collection</title>
         <meta name="description" content="A website for tracking board games" />
       </Head>
       <main>

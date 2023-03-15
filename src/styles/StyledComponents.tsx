@@ -59,4 +59,5 @@ export {
     StyledCollectionBorder, 
     StyledGameBorder, 
     StyledGameDivider,
-    StyledGameOutline };
+    StyledGameOutline,
+};
