@@ -1,11 +1,11 @@
 import { Box } from "@mui/material";
 import Image from "next/image";
 
-const gameDisplay = (user: any) => {
+const gameDisplay = () => {
   return (
     <Box>
       <h2>
-      {user.name}
+      Put the user here
       </h2>
     </Box>
   )

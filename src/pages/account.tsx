@@ -2,16 +2,12 @@ import Head from 'next/head';
 import { Inter } from '@next/font/google';
 import Container from '@mui/material/Container';
 import Sidebar from '@/components/sidebar';
-import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { Background, StyledMainBorder } from '@/styles/StyledComponents';
 import Image from "next/image";
 
 const inter = Inter({ subsets: ['latin'] })
 
 const UserAccount = () => {
-  const { user, isLoading } = useUser();
-  if (isLoading) return <div>Loading...</div>
-
   return (
     <>
       <Head>
@@ -26,10 +22,10 @@ const UserAccount = () => {
               <Image 
               width={200}
               height={200}
-              src={user?.picture!} alt={'user avatar'}>
+              src={'/'} alt={'user avatar'}>
               </Image>
-              <h2>{user?.nickname}</h2>
-              <h2>{user?.email}</h2>
+              <h2>username</h2>
+              <h2>user email</h2>
             </StyledMainBorder>
           </Background>
         </Container>
@@ -38,6 +34,4 @@ const UserAccount = () => {
   )
 }
 
-export default withPageAuthRequired(UserAccount, {
-  onRedirecting: () => <></>
-})
+export default UserAccount

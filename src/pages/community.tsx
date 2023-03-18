@@ -2,7 +2,6 @@ import Head from 'next/head';
 import { Inter } from '@next/font/google';
 import Container from '@mui/material/Container';
 import Sidebar from '@/components/sidebar';
-import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { Background, StyledMainBorder } from '@/styles/StyledComponents';
 import { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
@@ -13,7 +12,6 @@ import UserDisplay from '@/components/UserDisplay';
 const inter = Inter({ subsets: ['latin'] })
 
 const Community = () => {
-  const { user, isLoading } = useUser();
   const userInstance = collection(db, `/users`)
   const [userArray, setUserArray] = useState<{}[]>([])
   
@@ -25,8 +23,6 @@ const Community = () => {
       }))
     })
   },[])
-
-  if (isLoading) return <div>Loading...</div>
   
   return (
     <>
@@ -52,6 +48,4 @@ const Community = () => {
   )
 }
 
-export default withPageAuthRequired(Community, {
-  onRedirecting: () => <></>
-})
+export default Community

@@ -3,11 +3,10 @@ import { collection, doc, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../../firebase_config"
 import GameDisplay from "./GameDisplay";
-import { useUser } from "@auth0/nextjs-auth0/client";
+import AddGame from "./AddGame";
 
 const MyCollection =() => {
-  const { user } = useUser();
-  const collectionInstance = collection(db, `/users/${user?.nickname}/games`)
+  const collectionInstance = collection(db, `/users/parkeralexjm/games`)
   const [ collectionArray, setCollectionArray] = useState<{}[]>([])
 
   useEffect(() => {
@@ -18,6 +17,7 @@ const MyCollection =() => {
       }))
     })
   },[])
+  console.log(collectionArray)
 
   return (
     <>
@@ -26,6 +26,7 @@ const MyCollection =() => {
         GameDisplay(game)
         ))}
       </Box>
+      <AddGame/>
     </>
   )
 }

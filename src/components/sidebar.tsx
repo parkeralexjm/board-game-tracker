@@ -12,7 +12,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { ThemeProvider } from '@mui/material';
 import Button from '@mui/material/Button';
 import { PageRoute } from '@/utils/pagerouting';
-import { useUser } from '@auth0/nextjs-auth0/client';
 import SearchBar from './SearchBar';
 import Image from 'next/image';
 import logo from '../assets/tempLogo.png'
@@ -27,8 +26,6 @@ const ResponsiveDrawer = () => {
     setMobileOpen(!mobileOpen);
   }
 
-  const { user } = useUser()
-
   const drawer = (
     <> 
       <Toolbar sx={{display:'flex', justifyContent:'space-around'}}>
@@ -38,9 +35,8 @@ const ResponsiveDrawer = () => {
           </Link>
         </Box>
         <Box sx={{display:'flex', flexDirection:'column', alignItems:'right', gap:'10px', py:'10px'}}>
-          {!user ? 
-          <Button variant='contained' href="/api/auth/login">Login</Button> : 
-          <Button variant='outlined' href="/api/auth/logout">Logout</Button>}
+          <Button variant='contained' href="/api/auth/login">Login</Button>
+          <Button variant='outlined' href="/api/auth/logout">Logout</Button>
         </Box>
       </Toolbar>
       <Divider />
