@@ -43,6 +43,7 @@ function EmailPasswordSignInForm(
           name="email"
           type="email"
           className="TextField"
+          autoComplete="Email"
         />
 
         <input
@@ -51,6 +52,7 @@ function EmailPasswordSignInForm(
           name="password"
           type="password"
           className="TextField"
+          autoComplete="Password"
         />
 
         {

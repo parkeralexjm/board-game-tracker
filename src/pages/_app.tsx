@@ -1,7 +1,7 @@
 import '@/styles/globals.css'
 import React from 'react';
 import { AppProps } from "next/app";
-import { initializeApp } from 'firebase/app';
+import { app } from 'firebase_config'
 
 import {
   initializeAuth,
@@ -10,15 +10,18 @@ import {
   inMemoryPersistence,
 } from 'firebase/auth';
 
-import { FirebaseAppProvider, AuthProvider } from 'reactfire';
+import { FirebaseAppProvider, AuthProvider, DatabaseProvider } from 'reactfire';
 
 import configuration from '~/configuration';
+import { getDatabase } from 'firebase/database';
+
 function App(props: AppProps) {
   const { Component, pageProps } = props;
 
+  const database = getDatabase(app)
+
   // we initialize the firebase app
   // using the configuration that we defined above
-  const app = initializeApp(configuration.firebase);
 
   // make sure we're not using IndexedDB when SSR
   // as it is only supported on browser environments
@@ -41,9 +44,11 @@ function App(props: AppProps) {
   }
 
   return (
-    <FirebaseAppProvider firebaseApp={app}>
+    <FirebaseAppProvider firebaseApp={app} firebaseConfig={configuration.firebase}>
       <AuthProvider sdk={auth}>
-        <Component {...pageProps} />
+        <DatabaseProvider sdk={database}>
+          <Component {...pageProps} />
+        </DatabaseProvider>
       </AuthProvider>
     </FirebaseAppProvider>
   );

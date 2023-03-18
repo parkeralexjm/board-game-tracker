@@ -5,10 +5,18 @@ import Sidebar from '@/components/sidebar';
 import { Background, StyledMainBorder } from '@/styles/StyledComponents';
 import Image from "next/image";
 import GuardedPage from '@/components/GuardedPage';
+import { useUser } from 'reactfire';
 
 const inter = Inter({ subsets: ['latin'] })
 
-const UserAccount = () => {
+const Account = (props: any) => {
+  const { status, data: user } = useUser();
+  if (status === "loading") {
+    return <span>loading...</span>;
+  }
+
+  console.log(user)
+
   return (
     <GuardedPage whenSignedOut="/auth/sign-in">
       <Head>
@@ -20,13 +28,7 @@ const UserAccount = () => {
           <Sidebar/>
           <Background aria-label="account-background">
             <StyledMainBorder>
-              <Image 
-              width={200}
-              height={200}
-              src={'/'} alt={'user avatar'}>
-              </Image>
-              <h2>username</h2>
-              <h2>user email</h2>
+              <h2>Welcome back, {user?.email}</h2>
             </StyledMainBorder>
           </Background>
         </Container>
@@ -35,4 +37,4 @@ const UserAccount = () => {
   )
 }
 
-export default UserAccount
+export default Account

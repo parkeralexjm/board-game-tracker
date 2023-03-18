@@ -3,14 +3,15 @@ import { Inter } from '@next/font/google';
 import Container from '@mui/material/Container';
 import Sidebar from '@/components/sidebar';
 import { Background, StyledMainBorder } from '@/styles/StyledComponents';
-import { useState } from 'react';
 import Box from '@mui/material/Box';
 import GuardedPage from '@/components/GuardedPage';
+import { useFirebaseApp } from 'reactfire';
 
 const inter = Inter({ subsets: ['latin'] })
 
-const Community = () => {
-  const [userArray, setUserArray] = useState<{}[]>([])
+const Community = (props: any) => {
+  const app = useFirebaseApp()
+
   
   return (
     <GuardedPage whenSignedOut="/auth/sign-in">
@@ -24,13 +25,12 @@ const Community = () => {
           <Background aria-label="account-background">
             <StyledMainBorder>
               <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap"}}>
-                Userlist
               </Box>
             </StyledMainBorder>
           </Background>
         </Container>
       </main>
-      </GuardedPage>
+    </GuardedPage>
   )
 }
 

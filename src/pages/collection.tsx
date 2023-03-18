@@ -3,12 +3,12 @@ import { Inter } from '@next/font/google';
 import Container from '@mui/material/Container';
 import Sidebar from '@/components/sidebar';
 import { Background, StyledCollectionBorder, StyledMainBorder } from '@/styles/StyledComponents';
-import MyCollection from '@/components/myCollection';
+import UserCollection from '@/components/UserCollection';
 import GuardedPage from '@/components/GuardedPage';
 
 const inter = Inter({ subsets: ['latin'] })
 
-const UserCollection = () => {
+const Collection = () => {
 
   return (
     <GuardedPage whenSignedOut="/auth/sign-in">
@@ -21,7 +21,7 @@ const UserCollection = () => {
           <Sidebar/>
           <Background aria-label='collection-background'>  
               <StyledCollectionBorder aria-label="collection-box">
-                <MyCollection/>
+                <UserCollection/>
               </StyledCollectionBorder> 
           </Background>
         </Container>
@@ -30,4 +30,4 @@ const UserCollection = () => {
   )
 }
 
-export default UserCollection
+export default Collection

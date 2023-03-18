@@ -48,7 +48,6 @@ function EmailPasswordSignUpForm(
           type="email"
           className="TextField"
         />
-
         <input
           required
           placeholder="Your Password"
@@ -56,11 +55,16 @@ function EmailPasswordSignUpForm(
           type="password"
           className="TextField"
         />
-
         {
           error ? <span className="text-red-500">{error.message}</span> : null
         }
-
+        <input
+          required
+          placeholder="username"
+          name="username"
+          type="username"
+          className="TextField"
+        />
         <button
           disabled={loading}
           className="Button w-full"

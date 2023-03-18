@@ -18,7 +18,7 @@ export function useSignUpWithEmailAndPassword() {
         email,
         password
       );
-
+      
       setData(credential);
     } catch (error) {
       setError(error as FirebaseError);
