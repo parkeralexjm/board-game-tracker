@@ -4,13 +4,14 @@ import Container from '@mui/material/Container';
 import Sidebar from '@/components/sidebar';
 import { Background, StyledCollectionBorder, StyledMainBorder } from '@/styles/StyledComponents';
 import MyCollection from '@/components/myCollection';
+import GuardedPage from '@/components/GuardedPage';
 
 const inter = Inter({ subsets: ['latin'] })
 
 const UserCollection = () => {
 
   return (
-    <>
+    <GuardedPage whenSignedOut="/auth/sign-in">
       <Head>
         <title>Board Game Tracker | Collection</title>
         <meta name="description" content="A website for tracking board games" />
@@ -25,7 +26,7 @@ const UserCollection = () => {
           </Background>
         </Container>
       </main>
-    </>
+    </GuardedPage>
   )
 }
 

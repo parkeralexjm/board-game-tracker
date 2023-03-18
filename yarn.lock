@@ -2880,6 +2880,11 @@ react-transition-group@^4.4.5:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
+react-util-hooks@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/react-util-hooks/-/react-util-hooks-0.2.2.tgz#1dcc1bc62868502ae3489e6ecd254563ce14cf81"
+  integrity sha512-SWFg1Whg/sAqvVy+/AROyVIPSzvWbfnIgeFwipqbShfHhrzAuVnLDM5Laz/GT7jCITG0LLnwtGKrMvXDT8zh7w==
+
 react@18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"

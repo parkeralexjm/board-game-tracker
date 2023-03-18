@@ -10,12 +10,12 @@ import AppBar from '@mui/material/AppBar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { ThemeProvider } from '@mui/material';
-import Button from '@mui/material/Button';
-import { PageRoute } from '@/utils/pagerouting';
+import { PageRoute } from '@/utils/Pageroute';
 import SearchBar from './SearchBar';
 import Image from 'next/image';
 import logo from '../assets/tempLogo.png'
 import Link from 'next/link';
+import SignOutButton from './SignOutButton';
 
 const drawerWidth = 240;
 
@@ -35,8 +35,9 @@ const ResponsiveDrawer = () => {
           </Link>
         </Box>
         <Box sx={{display:'flex', flexDirection:'column', alignItems:'right', gap:'10px', py:'10px'}}>
-          <Button variant='contained' href="/api/auth/login">Login</Button>
-          <Button variant='outlined' href="/api/auth/logout">Logout</Button>
+          {/* <Button variant='contained' href="/api/auth/login">Login</Button>
+          <Button variant='outlined' href="/api/auth/logout">Logout</Button> */}
+          <SignOutButton/>
         </Box>
       </Toolbar>
       <Divider />

@@ -4,12 +4,13 @@ import Container from '@mui/material/Container';
 import Sidebar from '@/components/sidebar';
 import { Background, StyledMainBorder } from '@/styles/StyledComponents';
 import Image from "next/image";
+import GuardedPage from '@/components/GuardedPage';
 
 const inter = Inter({ subsets: ['latin'] })
 
 const UserAccount = () => {
   return (
-    <>
+    <GuardedPage whenSignedOut="/auth/sign-in">
       <Head>
         <title>Board Game Tracker | Account</title>
         <meta name="description" content="A website for tracking board games" />
@@ -30,7 +31,7 @@ const UserAccount = () => {
           </Background>
         </Container>
       </main>
-    </>
+    </GuardedPage>
   )
 }
 
