@@ -2,34 +2,19 @@ import Head from 'next/head';
 import { Inter } from '@next/font/google';
 import Container from '@mui/material/Container';
 import Sidebar from '@/components/sidebar';
-import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { Background, StyledMainBorder } from '@/styles/StyledComponents';
-import { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from 'firebase_config';
 import Box from '@mui/material/Box';
-import UserDisplay from '@/components/UserDisplay';
+import GuardedPage from '@/components/GuardedPage';
+import { useFirebaseApp } from 'reactfire';
 
 const inter = Inter({ subsets: ['latin'] })
 
-const Community = () => {
-  const { user, isLoading } = useUser();
-  const userInstance = collection(db, `/users`)
-  const [userArray, setUserArray] = useState<{}[]>([])
-  
-  useEffect(() => {
-    getDocs(userInstance)
-    .then((data) => {
-      setUserArray(data.docs.map((item) => {
-        return { ...item.data(), id: item.id}
-      }))
-    })
-  },[])
+const Community = (props: any) => {
+  const app = useFirebaseApp()
 
-  if (isLoading) return <div>Loading...</div>
   
   return (
-    <>
+    <GuardedPage whenSignedOut="/auth/sign-in">
       <Head>
         <title>Board Game Tracker | Community</title>
         <meta name="description" content="A website for tracking board games" />
@@ -40,18 +25,13 @@ const Community = () => {
           <Background aria-label="account-background">
             <StyledMainBorder>
               <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap"}}>
-                {userArray.map((user) => (
-                  UserDisplay(user)
-                ))}
               </Box>
             </StyledMainBorder>
           </Background>
         </Container>
       </main>
-    </>
+    </GuardedPage>
   )
 }
 
-export default withPageAuthRequired(Community, {
-  onRedirecting: () => <></>
-})
+export default Community

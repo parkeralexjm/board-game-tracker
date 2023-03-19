@@ -10,13 +10,12 @@ import AppBar from '@mui/material/AppBar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { ThemeProvider } from '@mui/material';
-import Button from '@mui/material/Button';
-import { PageRoute } from '@/utils/pagerouting';
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { PageRoute } from '@/utils/Pageroute';
 import SearchBar from './SearchBar';
 import Image from 'next/image';
 import logo from '../assets/tempLogo.png'
 import Link from 'next/link';
+import SignOutButton from './SignOutButton';
 
 const drawerWidth = 240;
 
@@ -27,8 +26,6 @@ const ResponsiveDrawer = () => {
     setMobileOpen(!mobileOpen);
   }
 
-  const { user } = useUser()
-
   const drawer = (
     <> 
       <Toolbar sx={{display:'flex', justifyContent:'space-around'}}>
@@ -38,9 +35,9 @@ const ResponsiveDrawer = () => {
           </Link>
         </Box>
         <Box sx={{display:'flex', flexDirection:'column', alignItems:'right', gap:'10px', py:'10px'}}>
-          {!user ? 
-          <Button variant='contained' href="/api/auth/login">Login</Button> : 
-          <Button variant='outlined' href="/api/auth/logout">Logout</Button>}
+          {/* <Button variant='contained' href="/api/auth/login">Login</Button>
+          <Button variant='outlined' href="/api/auth/logout">Logout</Button> */}
+          <SignOutButton/>
         </Box>
       </Toolbar>
       <Divider />
