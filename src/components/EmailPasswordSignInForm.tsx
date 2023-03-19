@@ -1,5 +1,6 @@
 import { FormEvent, useCallback, useEffect } from "react";
 import { useSignInWithEmailAndPassword } from "../lib/hooks/useSignInWithEmailAndPassword";
+import { SplashBackground } from "./Splash";
 
 function EmailPasswordSignInForm(
   props: React.PropsWithChildren<{
@@ -35,35 +36,35 @@ function EmailPasswordSignInForm(
   );
 
   return (
-    <form className={"w-full"} onSubmit={onSubmit}>
-      <div className={"flex-col space-y-6"}>
-        <input
-          required
-          placeholder="Your Email"
-          name="email"
-          type="email"
-          className="TextField"
-          autoComplete="Email"
-        />
+      <form className={"w-full"} onSubmit={onSubmit}>
+        <div className={"flex-col space-y-6"}>
+          <input
+            required
+            placeholder="Your Email"
+            name="email"
+            type="email"
+            className="TextField"
+            autoComplete="Email"
+          />
 
-        <input
-          required
-          placeholder="Your Password"
-          name="password"
-          type="password"
-          className="TextField"
-          autoComplete="Password"
-        />
+          <input
+            required
+            placeholder="Your Password"
+            name="password"
+            type="password"
+            className="TextField"
+            autoComplete="Password"
+          />
 
-        {
-          error ? <span className="text-red-500">{error.message}</span> : null
-        }
+          {
+            error ? <span className="text-red-500">{error.message}</span> : null
+          }
 
-        <button disabled={loading} className="Button w-full">
-          Sign In
-        </button>
-      </div>
-    </form>
+          <button disabled={loading} className="Button w-full">
+            Sign In
+          </button>
+        </div>
+      </form>
   );
 }
 

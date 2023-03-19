@@ -4,6 +4,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 
 import { useSignInWithProvider } from "../../lib/hooks/useSignInWithProvider";
 import EmailPasswordSignUpForm from "@/components/EmailPasswordSignupForm";
+import { SplashBackground } from "@/components/Splash";
 
 const SignUp = () => {
   const [signInWithProvider, signInWithProviderState] = useSignInWithProvider();
@@ -34,17 +35,19 @@ const SignUp = () => {
   }, [signInWithProviderState.success, onSignup]);
 
   return (
-    <div className="flex flex-col space-y-8 items-center justify-center mx-auto h-screen w-11/12 lg:w-4/12">
-      <div>
-        <h1 className="Hero">Sign Up</h1>
-      </div>
+    <SplashBackground>
+      <div className="flex flex-col space-y-8 items-center justify-center mx-auto h-screen w-11/12 lg:w-4/12">
+        <div>
+          <h1 className="Hero">Sign Up</h1>
+        </div>
 
-      <div className="flex flex-col space-y-8">
-        <AuthProviderButton />
+        <div className="flex flex-col space-y-8">
+          <AuthProviderButton />
 
-        <EmailPasswordSignUpForm onSignup={onSignup} />
+          <EmailPasswordSignUpForm onSignup={onSignup} />
+        </div>
       </div>
-    </div>
+    </SplashBackground>
   );
 };
 

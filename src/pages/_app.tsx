@@ -10,10 +10,11 @@ import {
   inMemoryPersistence,
 } from 'firebase/auth';
 
-import { FirebaseAppProvider, AuthProvider, DatabaseProvider } from 'reactfire';
+import { FirebaseAppProvider, AuthProvider, DatabaseProvider, useFirebaseApp, FirestoreProvider } from 'reactfire';
 
 import configuration from '~/configuration';
 import { getDatabase } from 'firebase/database';
+import { getFirestore } from 'firebase/firestore';
 
 function App(props: AppProps) {
   const { Component, pageProps } = props;
@@ -44,12 +45,12 @@ function App(props: AppProps) {
   }
 
   return (
-    <FirebaseAppProvider firebaseApp={app} firebaseConfig={configuration.firebase}>
-      <AuthProvider sdk={auth}>
-        <DatabaseProvider sdk={database}>
-          <Component {...pageProps} />
-        </DatabaseProvider>
-      </AuthProvider>
+    <FirebaseAppProvider firebaseApp={app} firebaseConfig={configuration.firebase}> 
+        <AuthProvider sdk={auth}>
+          <DatabaseProvider sdk={database}>
+            <Component {...pageProps} />
+          </DatabaseProvider>
+        </AuthProvider>
     </FirebaseAppProvider>
   );
 }

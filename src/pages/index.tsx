@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { NextPage } from 'next'
 import { Inter } from '@next/font/google';
-import Splash from '@/components/Splash';
+import { Splash } from '@/components/Splash';
 
 const inter = Inter({ subsets: ['latin'] });
 

@@ -1,13 +1,15 @@
 import Box from "@mui/material/Box";
-import { useState } from "react";
 
+import { useUser } from "reactfire";
 
-const UserCollection =() => {
-  const [ collectionArray, setCollectionArray] = useState<{}[]>([])
+const UserCollection =(props: any) => {
+
+  const { status, data:user } = useUser();
 
   return (
     <>
       <Box sx={{ display: "flex", gap: 2, flexWrap: 'wrap'}}>
+        <h1>Welcome Back, {user?.uid}!</h1>
       </Box>
     </>
   )

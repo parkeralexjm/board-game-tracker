@@ -37,4 +37,4 @@ const Splash = () => {
   )
 }
 
-export default Splash;
+export { Splash, SplashBackground };
